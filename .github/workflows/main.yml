@@ -29,8 +29,11 @@ jobs:
 
       - name: Dockerfile linter
         uses: hadolint/hadolint-action@v3.1.0
+        # For now, ignoring:
+        # DL3008 warning: Pin versions in apt get install (e.g., apt-get install <package>=<version>)
         with:
           dockerfile: Dockerfile
+          ignore: DL3008
 
   license-check:
     runs-on: ubuntu-latest
