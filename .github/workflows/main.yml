@@ -1,8 +1,5 @@
 # SPDX-FileCopyrightText: 2024 Intel Corporation
 # SPDX-License-Identifier: Apache-2.0
-
-name: Main workflow
-
 on:
   pull_request:
     branches:
@@ -13,42 +10,22 @@ on:
 
 jobs:
   docker-build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Build Docker image
-        run: make docker-build
+    uses: omec-project/.github/.github/workflows/docker-build.yml@main
+    with:
+      branch_name: ${{ github.ref }}
 
   hadolint:
-    name: hadolint
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Dockerfile linter
-        uses: hadolint/hadolint-action@v3.1.0
-        # For now, ignoring:
-        # DL3008 warning: Pin versions in apt get install (e.g., apt-get install <package>=<version>)
-        with:
-          dockerfile: Dockerfile
-          ignore: DL3008
+    uses: omec-project/.github/.github/workflows/hadolint.yml@main
+    with:
+      branch_name: ${{ github.ref }}
 
   license-check:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+    uses: omec-project/.github/.github/workflows/license-check.yml@main
+    with:
+      branch_name: ${{ github.ref }}
 
-      - name: reuse lint
-        uses: fsfe/reuse-action@v5
+  fossa-scan:
+    uses: omec-project/.github/.github/workflows/fossa-scan.yml@main
+    with:
+      branch_name: ${{ github.ref }}
 
-  fossa-check:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: FOSSA scan
-        uses: fossa-contrib/fossa-action@v3
-        with:
-          fossa-api-key: 0c3bbcdf20e157bbd487dae173751b28
