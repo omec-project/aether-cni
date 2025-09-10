@@ -10,7 +10,7 @@ on:
 
 jobs:
   docker-build:
-    uses: omec-project/.github/.github/workflows/docker-build.yml@main
+    uses: omec-project/.github/.github/workflows/docker-build-no-go.yml@main
     with:
       branch_name: ${{ github.ref }}
 
