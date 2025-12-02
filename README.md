@@ -6,6 +6,8 @@ SPDX-License-Identifier: Apache-2.0
 
 -->
 
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/omec-project/aether-cni/badge)](https://scorecard.dev/viewer/?uri=github.com/omec-project/aether-cni)
+
 # aether-cni
 
 Dockerfile in this repository incorporates and packages CNI plugins used in Aether SD-Core project.
