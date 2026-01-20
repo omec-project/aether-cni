@@ -13,7 +13,7 @@ RUN apt-get update && \
     && cp ./static /bin/static \
     && cp ./dhcp /bin/dhcp
 
-FROM ghcr.io/jqlang/jq:1.8.1 AS jq
+FROM ghcr.io/jqlang/jq:1.8.1@sha256:4f34c6d23f4b1372ac789752cc955dc67c2ae177eb1b5860b75cdc5091ce6f91 AS jq
 
 FROM centos/systemd@sha256:09db0255d215ca33710cc42e1a91b9002637eeef71322ca641947e65b7d53b58 AS aether-cni
 WORKDIR /tmp/cni/bin
