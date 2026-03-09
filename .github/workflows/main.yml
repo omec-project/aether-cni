@@ -20,7 +20,7 @@ jobs:
       packages: write
       id-token: write
       attestations: write
-    uses: omec-project/.github/.github/workflows/docker-build-no-go.yml@83e008dce269e94fbd6cdbb79847283f0b9e9774 # v0.0.19
+    uses: omec-project/.github/.github/workflows/docker-build.yml@83e008dce269e94fbd6cdbb79847283f0b9e9774 # v0.0.19
     with:
       branch_name: ${{ github.ref }}
 
