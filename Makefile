@@ -33,9 +33,6 @@ DOCKER_LABEL_VCS_REF     ?= $(shell \
 	)}}}")
 DOCKER_LABEL_BUILD_DATE  ?= $(shell date -u "+%Y-%m-%dT%H:%M:%SZ")
 
-## Build configuration
-BINARY_NAME              := $(PROJECT_NAME)
-
 # Default target
 .DEFAULT_GOAL := help
 
@@ -67,9 +64,6 @@ docker-clean: ## Remove local Docker image
 ## Utility targets
 clean: ## Clean build artifacts
 	@echo "Cleaning build artifacts..."
-	@rm -rf $(BIN_DIR)
-	@rm -rf $(COVERAGE_DIR)
-	@rm -rf vendor
 	@docker system prune -f --filter label=org.opencontainers.image.source="https://github.com/omec-project/$(PROJECT_NAME)" 2>/dev/null || true
 
 print-version: ## Print current version
@@ -78,7 +72,6 @@ print-version: ## Print current version
 env: ## Print environment variables
 	@echo "PROJECT_NAME=$(PROJECT_NAME)"
 	@echo "VERSION=$(VERSION)"
-	@echo "BINARY_NAME=$(BINARY_NAME)"
 	@echo "DOCKER_REGISTRY=$(DOCKER_REGISTRY)"
 	@echo "DOCKER_REPOSITORY=$(DOCKER_REPOSITORY)"
 	@echo "DOCKER_IMAGE_PREFIX=$(DOCKER_IMAGE_PREFIX)"
