@@ -13,6 +13,8 @@ RUN apt-get update && \
     apt-get -y install --no-install-recommends \
     wget && \
     wget -q https://github.com/containernetworking/plugins/releases/download/${CNI_PLUGINS_VERSION}/cni-plugins-linux-amd64-${CNI_PLUGINS_VERSION}.tgz \
+    && wget -q https://github.com/containernetworking/plugins/releases/download/${CNI_PLUGINS_VERSION}/cni-plugins-linux-amd64-${CNI_PLUGINS_VERSION}.tgz.sha256 \
+    && sha256sum -c cni-plugins-linux-amd64-${CNI_PLUGINS_VERSION}.tgz.sha256 \
     && tar xvfz cni-plugins-linux-amd64-${CNI_PLUGINS_VERSION}.tgz \
     && cp ./static /bin/static \
     && cp ./dhcp /bin/dhcp
@@ -64,4 +66,4 @@ COPY --from=builder /bin/static .
 COPY --from=builder /bin/dhcp .
 COPY --from=jq /jq ./jq
 
-ENTRYPOINT ["/entrypoint.sh"]
+CMD ["/entrypoint.sh"]
