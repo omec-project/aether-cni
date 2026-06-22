@@ -19,7 +19,7 @@ RUN apt-get update && \
     && cp ./static /bin/static \
     && cp ./dhcp /bin/dhcp
 
-FROM ghcr.io/jqlang/jq:1.8.1@sha256:4f34c6d23f4b1372ac789752cc955dc67c2ae177eb1b5860b75cdc5091ce6f91 AS jq
+FROM ghcr.io/jqlang/jq:1.8.2@sha256:b9c68867e5766576263a222e91db3de422d802069c7af70440e667a95344e486 AS jq
 
 FROM ghcr.io/k8snetworkplumbingwg/sriov-cni:v2.10.0@sha256:0f225c399f080445c70ff6ca5c8439c607f515688a24c7a65b733cf758e76376 AS sriov-cni
 
