@@ -1,7 +1,6 @@
 # SPDX-FileCopyrightText: 2024 Intel Corporation
 # SPDX-License-Identifier: Apache-2.0
 name: CI Pipeline
-
 on:
   pull_request:
     branches:
@@ -9,10 +8,8 @@ on:
   push:
     branches:
       - main
-
 permissions:
   contents: read
-
 jobs:
   docker-build:
     permissions:
@@ -23,7 +20,6 @@ jobs:
     uses: omec-project/.github/.github/workflows/docker-build.yml@c6f69e74f8ee9034dcc237ccbd719de59526aee5 # v0.0.30
     with:
       branch_name: ${{ github.ref }}
-
   hadolint:
     permissions:
       contents: read
@@ -33,7 +29,6 @@ jobs:
     uses: omec-project/.github/.github/workflows/hadolint.yml@c6f69e74f8ee9034dcc237ccbd719de59526aee5 # v0.0.30
     with:
       branch_name: ${{ github.ref }}
-
   license-check:
     permissions:
       contents: read
@@ -42,7 +37,6 @@ jobs:
     uses: omec-project/.github/.github/workflows/license-check.yml@c6f69e74f8ee9034dcc237ccbd719de59526aee5 # v0.0.30
     with:
       branch_name: ${{ github.ref }}
-
   fossa-scan:
     permissions:
       contents: read
@@ -52,7 +46,6 @@ jobs:
     uses: omec-project/.github/.github/workflows/fossa-scan.yml@c6f69e74f8ee9034dcc237ccbd719de59526aee5 # v0.0.30
     with:
       branch_name: ${{ github.ref }}
-
   analysis:
     if: github.repository_owner == 'omec-project'
     permissions:
