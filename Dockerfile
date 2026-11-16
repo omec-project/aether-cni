@@ -25,7 +25,7 @@ FROM ghcr.io/k8snetworkplumbingwg/sriov-cni:v2.10.0@sha256:0f225c399f080445c70ff
 
 FROM ghcr.io/k8snetworkplumbingwg/sriov-network-device-plugin:v3.11.0@sha256:7c5901727d4500f103f038c178b41dc6450afa6f324306c1973495c9a7c4f5a5 AS sriov-device-plugin
 
-FROM alpine:3.24@sha256:be2656061b536c1883c4034790e21d0a09c5aaaf51968b89368a3c0371ea2c9a AS aether-cni
+FROM alpine:3.24@sha256:f59abe656b692d901e184be3445e084786602108599d2a51d229c0f5a48c71bf AS aether-cni
 
 RUN apk add --no-cache \
     bash \
